@@ -1,3 +1,8 @@
+package com.game.play;
+/* Detect the collision of two Unit objects.
+ * Input : references of two Unit objects in instantiation.
+ * When collision happens, call collisionConsequence() of the first Unit object.
+ * */
 class CollisionMonitor{
 		
 	int collisionTimes = 0;
@@ -47,7 +52,7 @@ class CollisionMonitor{
 			while(!seperate()){}
 			collisionTimes ++;
 			//System.out.println("第"+collisionTimes+"次碰撞");
-			unit1.collisionFantasy();
+			unit1.collisionConsequence();
 			return true;
 			}
 		return false;

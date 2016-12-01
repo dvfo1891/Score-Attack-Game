@@ -1,3 +1,4 @@
+package com.game.play;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -194,7 +195,7 @@ public class Unit {
 	public void setDirectionRD(){dir = Direction.RD;}
 	public void setDirectionStop(){dir = Direction.STOP;}
 	
-	public void collisionFantasy() {}
+	public void collisionConsequence() {}
 	
 	//Getters and Setters
 	public Direction getDir() {

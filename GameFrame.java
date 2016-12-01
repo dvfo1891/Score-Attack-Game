@@ -1,3 +1,4 @@
+package com.game.play;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -7,19 +8,34 @@ public class GameFrame extends Frame {
 
 	static final int WIDTH = 800;
 	static final int HEIGHT = 500;
-	Unit hero = new Unit(30,30,30,3, this, Unit.Direction.STOP);
-	RedBallUnit redBallUnit1 = new RedBallUnit(100,100,30,2, this, Unit.Direction.RU);
-	RedBallUnit redBallUnit2 = new RedBallUnit(500,500,30,2, this, Unit.Direction.D);
+	Unit mainUnit = new Unit(30,30,30,3, this, Unit.Direction.STOP);
+	RedUnit redUnit1 = new RedUnit(100,100,30,2, this, Unit.Direction.RU);
+	RedUnit redUnit2 = new RedUnit(500,500,30,2, this, Unit.Direction.D);
 	List <Unit> units = new ArrayList<Unit>();
+	GreenUnit greenUnit1 = new GreenUnit(700,700,30,2, this, Unit.Direction.LU);
+	GreenUnit greenUnit2 = new GreenUnit(100,500,30,2, this, Unit.Direction.U);
+	BlueUnit blueUnit1 = new BlueUnit(600,300,30,2, this, Unit.Direction.RD);
+	BlueUnit blueUnit2 = new BlueUnit(300,500,30,2, this, Unit.Direction.LD);
+	InfoMenuBar infoMenuBar;
+	
+	public GameFrame(String str, int maxScore) throws HeadlessException {
+		super();
+		this.infoMenuBar = new InfoMenuBar(str,maxScore,this);
+	}
 	
 	public void paint(Graphics g) {
-		hero.draw(g);
-		redBallUnit1.draw(g);
-		redBallUnit2.draw(g);
+		mainUnit.draw(g);
+		redUnit1.draw(g);
+		redUnit2.draw(g);
 		for(int i=0; i<units.size(); i++){
 			Unit unit = units.get(i);
 			unit.draw(g);
 		}
+		greenUnit1.draw(g);
+		greenUnit2.draw(g);
+		blueUnit1.draw(g);
+		blueUnit2.draw(g);
+		infoMenuBar.draw(g);
 	}
 
 	public void lauchFrame(){
@@ -38,11 +54,6 @@ public class GameFrame extends Frame {
 		new Thread(new paintThread()).start();
 	}
 	
-	public static void main(String[] args) {
-		GameFrame g = new GameFrame();
-		g.lauchFrame();
-	}
-	
 	private class paintThread implements Runnable{
 		public void run() {
 			while(true){
@@ -59,16 +70,29 @@ public class GameFrame extends Frame {
 	private class KeyMonitor extends KeyAdapter{
 		
 		public void keyReleased(KeyEvent e) {
-			hero.keyReleased(e);
+			mainUnit.keyReleased(e);
 		}
 
 		public void keyPressed(KeyEvent e) {
-			hero.keyPressed(e);
+			mainUnit.keyPressed(e);
 		}
 	}
 	
+	public void exitGame(){
+		//call database and store data.
+		//exit game
+		System.exit(0);
+	}
 	
-	
-	
-	
+	public static void createGame(String str, int score){
+		GameFrame g = new GameFrame(str,score);
+		g.lauchFrame();
+	}
 }
+
+
+
+
+
+
+
