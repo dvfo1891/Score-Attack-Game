@@ -4,18 +4,25 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 public class Unit {
-
+		
+	// Necessary instance variables for all kinds of units.
 	protected int x;
 	protected int y;
 	protected int width;
 	protected int height;
-	private int speed;
+	protected int speed;
 	protected Color color = Color.BLACK;
 	protected GameFrame gf;
 	private boolean keyU = false, keyD = false, keyL = false, keyR = false;
 	enum Direction{U,D,L,R,LU,LD,RU,RD,STOP};
 	protected Direction dir = Direction.STOP;
 	
+	// Necessary instance variables for all enemy units(red,blue) and food units(green).
+	public Unit anotherUnit;
+	public CollisionMonitor cm;
+	public CollisionFantasy cf;
+	
+	// Constructor: Initialize unit's states and scale. And pass in the reference of GameFrame.
 	public Unit(int x, int y, int radius, int speed, GameFrame gf, Direction dir) {
 		this.x = x;
 		this.y = y;
@@ -24,9 +31,13 @@ public class Unit {
 		this.speed = speed;
 		this.gf = gf;
 		this.dir = dir;
-		
 	}
 
+	// Perform some fantasies after collision with main unit.
+	// This method is for enemy units and food units.
+	public void collisionConsequence() {}
+	
+	// Draw this unit.
 	public void draw(Graphics g){
 		Color c = g.getColor();
 		g.setColor(color);
@@ -36,6 +47,8 @@ public class Unit {
 		move();
 	}
 	
+	// Modify unit's coordinates to make it move based on current direction.
+	// If unit touches wall, modify its direction.
 	public void move(){
 		
 		switch(dir){
@@ -129,9 +142,7 @@ public class Unit {
 	}
 	
 	public void keyPressed(KeyEvent e){
-		
 		int key = e.getKeyCode();
-		
 		switch(key){
 		case KeyEvent.VK_LEFT:
 			keyL = true;
@@ -194,8 +205,6 @@ public class Unit {
 	public void setDirectionRU(){dir = Direction.RU;}
 	public void setDirectionRD(){dir = Direction.RD;}
 	public void setDirectionStop(){dir = Direction.STOP;}
-	
-	public void collisionConsequence() {}
 	
 	//Getters and Setters
 	public Direction getDir() {

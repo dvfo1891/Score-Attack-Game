@@ -1,7 +1,8 @@
 package com.game.play;
-/* Detect the collision of two Unit objects.
- * Input : references of two Unit objects in instantiation.
- * When collision happens, call collisionConsequence() of the first Unit object.
+/** 
+ * Detect the collision of two Unit objects.
+ * Input : references of two Unit objects.
+ * When collision happens, call method collisionConsequence() of the first Unit object.
  * */
 class CollisionMonitor{
 		
@@ -60,6 +61,7 @@ class CollisionMonitor{
 	
 	public class CollisionMoniterThread implements Runnable{
 
+		@Override
 		public void run() {
 			while(true){
 				isHit();

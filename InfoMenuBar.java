@@ -1,3 +1,9 @@
+/**
+ * After initialization, this class will:
+ * 		Monitor Current score.
+ * 		Create score bar.
+ * 		Call method GameFrame.exitGame() when score turn zero.
+ * */
 package com.game.play;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,7 +17,7 @@ public class InfoMenuBar {
 	public int currentMaxScore;
 	public final int lifeBarX = 100;
 	public final int lifeBarY = 30;
-	public final int lifeBarBlockLen = 10;
+	public final int lifeBarBlockLen = 20;
 	public GameFrame gf;
 	
 	public InfoMenuBar(String playerName, int originalScore, GameFrame gf) {
@@ -19,9 +25,8 @@ public class InfoMenuBar {
 		this.playerName = playerName;
 		this.originalScore = originalScore;
 		this.currentMaxScore = originalScore;
-		currentScore = 5;
+		currentScore = 10;
 		this.gf = gf;
-		
 	}
 	
 	public void draw(Graphics g){
@@ -44,7 +49,5 @@ public class InfoMenuBar {
 		g.setColor(c);
 		if(currentScore > currentMaxScore) currentMaxScore = currentScore;
 	}
-	
-
 	
 }

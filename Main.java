@@ -2,7 +2,7 @@ package com.game.play;
 public class Main {
 	public static void main(String[] args) {
 		
-		GameFrame.createGame("Dongyao wang",20);
+		GameFrame g = new GameFrame("Dongyao wang",20);
 		
 	}
 }
