@@ -15,7 +15,8 @@ public class ShrinkAndGainPointCollisionFantasy implements CollisionFantasy {
 	@Override
 	public void doFantasy() {
 		gf.infoMenuBar.currentScore++;
+		if(unit.width >= 3){
 		unit.width-=2;
-		unit.height-=2;
+		unit.height-=2;}
 	}
 }

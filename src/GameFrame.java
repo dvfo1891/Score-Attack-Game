@@ -21,7 +21,7 @@ public class GameFrame extends Frame {
 	RedUnit redUnit2 = new RedUnit(500,500,30,1, this, Unit.Direction.D);
 	List <Unit> units = new ArrayList<Unit>();
 	GreenUnit greenUnit1 = new GreenUnit(700,700,30,1, this, Unit.Direction.LU);
-	GreenUnit greenUnit2 = new GreenUnit(100,500,30,1, this, Unit.Direction.U);
+	GreenUnit greenUnit2 = new GreenUnit(100,500,30,1, this, Unit.Direction.RU);
 	BlueUnit blueUnit1 = new BlueUnit(600,300,30,1, this, Unit.Direction.RD);
 	BlueUnit blueUnit2 = new BlueUnit(300,500,30,1, this, Unit.Direction.LD);
 	InfoMenuBar infoMenuBar;

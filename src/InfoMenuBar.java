@@ -41,6 +41,10 @@ public class InfoMenuBar {
 		g.setColor(Color.orange);
 		g.drawString("Your Score :", 20, lifeBarY+15);
 		g.fillRect(lifeBarX, lifeBarY, lifeBarBlockLen*currentScore, 10+lifeBarBlockLen);
+		if(currentScore > 35){
+			g.setColor(Color.blue);
+			g.fillRect(lifeBarX, lifeBarY, lifeBarBlockLen*(currentScore - 35), 10+lifeBarBlockLen);
+		}
 		if(currentScore <= 0){
 			Font myFont = new Font("Courier New", 1, 40);
 			g.setFont(myFont);
